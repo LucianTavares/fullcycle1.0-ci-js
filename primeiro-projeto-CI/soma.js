@@ -5,6 +5,6 @@ const somaDoisNumeros = (primeiroNumero, segundoNumero) => {
   return somaTotal
 }
 
-somaDoisNumeros(1, 5)
+console.log(somaDoisNumeros(1, 5))
 
 module.exports = { somaDoisNumeros }
