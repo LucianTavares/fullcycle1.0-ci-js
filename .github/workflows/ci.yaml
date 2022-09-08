@@ -17,3 +17,15 @@ jobs:
       - run: npm install
       - run: npm test
       - run: node ./primeiro-projeto-CI/soma.js
+      
+      - name: Set up QEMU # responsável por rodar o Docker em diversas arquiteturas
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx # responsável por fazer o build do Dockerfile
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Build and push # Neste step ele faz o build e o push(se estiver true) para o dockerhub
+        uses: docker/build-push-action@v3
+        with:
+          push: false
+          tags: brcwalkers/fullcycle1.0-ci-js:latest
