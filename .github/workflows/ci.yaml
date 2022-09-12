@@ -16,7 +16,13 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm install
       - run: npm test
-      - run: node ./primeiro-projeto-CI/soma.js
+      - run: node ./src/soma.js
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
       - name: Set up QEMU # responsável por rodar o Docker em diversas arquiteturas
         uses: docker/setup-qemu-action@v2
